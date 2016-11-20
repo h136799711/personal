@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>快递查询</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,  maximum-scale=1.0, user-scalable=0" >
+			<link type="text/css" rel="stylesheet" href="__CDN__/amazeui/2.3.0/css/amazeui.min.css" />
+			<!-- <link type="text/css" rel="stylesheet" href="__CSS__/express.css" /> -->
+			<link type="text/css" rel="stylesheet" href="__CSS__/jquery.mobile-1.1.0.min.css" />
+<style>
+html,body{width:100%;height:100%;margin: 0;padding: 0;}
+table { width: 100%; }
+table tr { width: 100%; font-weight: bold; color: #909090 }
+table tr.last-line { color: #333333; }
+table tr.last-line { color: #FF6600; }
+table td { height: 60px; background: none }
+table tr.odd { background: #f6f6f6 }
+table tr.even { background: #eeeeee }
+table td.col1 { width: 30%; }
+table td.col2 { padding: 10px; width: 60%; line-height: 24px; }
+table td.colstatus { width: 10% }
+table tr td.colstatus { background: url("__IMG__/express/step_point.png") center center no-repeat }
+table tr.first-line td.colstatus,table tr:first-child td.colstatus { background: url("__IMG__/express/step_start.png") center center no-repeat }
+table tr.wait td.colstatus,table tr:last-child td.colstatus { background: url("__IMG__/express/step_wait.gif") center center no-repeat }
+table tr.checked td.colstatus { background: url("__IMG__/express/step_finish.png") center center no-repeat }
+.result-date, .result-time { display: block; width: 100%; text-align: center }
+.result-date { height: 15px; padding-top: 10px; font-weight: normal; font-size: 12px; }
+.result-time { height: 35px; font-size: 24px; }
+.result-btn{padding:10px; text-align:center; background-color:#aaa;}
+.result-btn a{ text-decoration:none;text-shadow:none;}
+.result-btn a.ui-link, .result-btn a.ui-link:hover, .result-btn a.ui-link:visited, .result-btn a.ui-link:active {color:#fff;}
+</style>
+</head>
+<body>
+{__NORUNTIME__}
+<table id="queryResult" cellpadding="0" cellspacing="0"><tbody>
+	<volist name="list" id="v" key="k" empty="$empty" >
+	<tr>
+		<td class="col1">
+			<span class="result-date">{$v[0]|substr=8,10}</span>
+			<span class="result-time">{$v[0]|substr=18,6}</span>
+		</td>
+		<td class="colstatus"></td>
+		<td class="col2"><span>{$v[1]}</span></td>
+	</tr>
+	<!-- <tr class="odd">
+		<td class="col1">
+			<span class="result-date">2016-04-04</span>
+			<span class="result-time">19:49</span>
+		</td>
+		<td class="colstatus"></td>
+		<td class="col2"><span>[深圳坂田] 深圳坂田 的 金乐伟 已收件 </span></td>
+	</tr> -->
+	</volist>
+</tbody></table>
+</body>
+</html>

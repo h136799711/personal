@@ -1,0 +1,1605 @@
+{
+  "last_modified":"2016-11-21 23:59:59",
+  "client_id": "by58018f50cfcae1",
+  "client_secret": "cb0bfaf5b9b2f53a216bf518e18fef18",
+  "alg":"md5_v2",
+  "project_name": "虎头奔项目接口",
+  "url_list":[
+    {"desc":"APP测试环境地址(中文版)","url":"http://api.hutouben.itboye.com/public/index.php?lang=zh-cn"},
+    {"desc":"PHP服务器地址(测试版)","url":"http://api.hutouben.itboye.com/public/index.php?lang=zh-cn&test=1"}
+  ],
+  "meta_list":[
+    {"title":"快递查看地址","value":"http://api.hutouben.itboye.com/public/web.php/Express/index?order_code={订单编号}&uid={用户id}&psw={用户密码}"},
+    {"title":"支付宝异步通知地址","value":"http://api.hutouben.itboye.com/public/index.php/Alipay/notify"},
+    {"title":"单图片查看接口","value":"http://api.hutouben.itboye.com/public/index.php/picture/index?id={图片id}"},
+    {"title":"头像查看地址","value":"http://api.hutouben.itboye.com/public/index.php/picture/avatar?uid={用户id}"},
+    {"title":"单图片上传接口","value":"http://api.hutouben.itboye.com/public/index.php/file/upload"},
+    {"title":"支持语言","value":"日本语 : ja; English:en;简体中文: zh-cn，繁体中文:zh-tw,英文：en"},
+    {"title":"支持语言接口地址","value":"http://api.hutouben.itboye.com/public/index.php/Lang/support"},
+    {"title":"接口文档地址","value":"https://doc.oschina.net/guangnan"},
+    {"title":"开发环境接口地址","value":"http://api.hutouben.itboye.com/public/index.php/"},
+    {"title":"定时任务处理（手动调用请加上from=crontab）","value":"http://api.hutouben.itboye.com/public/index.php/Task"}
+  ],
+  "api_list": [
+    {
+      "desc": "异步通知模拟接口",
+      "list": [
+        {
+          "desc": "支付宝异步通知模拟接口",
+          "type": "By_Alipay_simulator",
+          "version": ["100"],
+          "params": [
+            {
+              "key": "out_trade_no",
+              "desc": "支付编号[必选]",
+              "value": "PA16314215258567183102"
+            },
+            {
+              "key": "total_amount",
+              "desc": "支付金额[单位:元]",
+              "value": "0.01"
+            }
+          ],
+          "authors": [
+            {
+              "name": "hebidu",
+              "email": "346551990@qq.com"
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "desc": "首页相关接口",
+      "list": [
+        {
+          "desc": "首页商品列表接口",
+          "type": "By_Index_index",
+          "version": ["102"],
+          "params": [
+            {
+              "key": "uid",
+              "desc": "用户id[可选]",
+              "value": "39"
+            },
+            {
+              "key": "page_index",
+              "desc": "页码[必传]",
+              "value": "1"
+            },
+            {
+              "key": "page_size",
+              "desc": "页数[必传]",
+              "value": "20"
+            }
+          ],
+          "authors": [
+            {
+              "name": "hebidu",
+              "email": "346551990@qq.com"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "desc": "订单相关接口",
+      "list": [
+        {
+          "desc": "订单发货接口(可用于模拟后台操作对该订单进行发货)",
+          "type": "By_Order_shipped",
+          "version": ["100"],
+          "params": [
+            {
+              "key": "uid",
+              "desc": "用户id[必须]",
+              "value": "39"
+            },
+            {
+              "key": "order_code",
+              "desc": "订单编号[必须]",
+              "value": "T16314215251195723302"
+            },
+            {
+              "key": "express_no",
+              "desc": "物流单号[必须]",
+              "value": "3333"
+            },
+            {
+              "key": "express_code",
+              "desc": "物流公司编码(ems)[必须]",
+              "value": "ems"
+            },
+            {
+              "key": "express_name",
+              "desc": "物流公司名称[必须]",
+              "value": "邮政快递"
+            }
+          ],
+          "authors": [
+            {
+              "name": "hebidu",
+              "email": "346551990@qq.com"
+            }
+          ]
+        },
+        {
+          "desc": "订单确认接口(可用于模拟后台操作确认该订单)",
+          "type": "By_Order_confirm",
+          "version": ["100"],
+          "params": [
+            {
+              "key": "uid",
+              "desc": "用户id[必须]",
+              "value": "39"
+            },
+            {
+              "key": "order_code",
+              "desc": "订单编号[必须]",
+              "value": "T16314215251195723302"
+            }
+          ],
+          "authors": [
+            {
+              "name": "hebidu",
+              "email": "346551990@qq.com"
+            }
+          ]
+        },
+        {
+          "desc": "订单确认收货接口",
+          "type": "By_Order_receiveGoods",
+          "version": ["100"],
+          "params": [
+            {
+              "key": "uid",
+              "desc": "用户id[必须]",
+              "value": "39"
+            },
+            {
+              "key": "order_code",
+              "desc": "订单编号[必须]",
+              "value": "T16314215251195723302"
+            }
+          ],
+          "authors": [
+            {
+              "name": "hebidu",
+              "email": "346551990@qq.com"
+            }
+          ]
+        },
+        {
+          "desc": "订单立即购买接口（根据传输的商品规格id、商品数目）",
+          "type": "By_Order_createNow",
+          "version": ["100"],
+          "params": [
+            {
+              "key": "uid",
+              "desc": "用户id[必须]",
+              "value": "39"
+            },
+            {
+              "key": "sku_pkid",
+              "desc": "购买的商品的规格id多个逗号分开（注意：不是sku_id）",
+              "value": "185,186"
+            },
+            {
+              "key": "count",
+              "desc": "购买的数量，多个逗号分开（与sku_pkid应该一致）",
+              "value": "5,5"
+            },
+            {
+              "key": "address_id",
+              "desc": "收货地址id[必须]",
+              "value": "277"
+            },
+            {
+              "key": "note",
+              "desc": "备注[可选]",
+              "value": "我是备注"
+            }
+          ],
+          "authors": [
+            {
+              "name": "hebidu",
+              "email": "346551990@qq.com"
+            }
+          ]
+        },
+        {
+          "desc": "订单分页查询接口",
+          "type": "By_Order_query",
+          "version": ["100"],
+          "params": [
+            {
+              "key": "uid",
+              "desc": "用户id[必须]",
+              "value": "39"
+            },
+            {
+              "key": "keyword",
+              "desc": "订单关键词（目前和订单包含的商品名称关联）[可选]",
+              "value": ""
+            },
+            {
+              "key": "query_status",
+              "desc": "订单查询状态 [0=>全部,1=>待付款,2=>待发货,3=>待收货,4=>已收货, 7=>已完成 8=>已关闭][可选]",
+              "value": "0"
+            },
+            {
+              "key": "page_index",
+              "desc": "页码[可须]",
+              "value": "1"
+            },
+            {
+              "key": "page_size",
+              "desc": "页大小[可须]",
+              "value": "10"
+            }
+          ],
+          "authors": [
+            {
+              "name": "hebidu",
+              "email": "346551990@qq.com"
+            }
+          ]
+        },
+        {
+          "desc": "订单详情接口",
+          "type": "By_Order_detail",
+          "version": ["100"],
+          "params": [
+            {
+              "key": "uid",
+              "desc": "用户id[必须]",
+              "value": "39"
+            },
+            {
+              "key": "order_code",
+              "desc": "订单编号[必须]",
+              "value": "T16314215251195723302"
+            }
+          ],
+          "authors": [
+            {
+              "name": "hebidu",
+              "email": "346551990@qq.com"
+            }
+          ]
+        },
+        {
+          "desc": "订单创建接口",
+          "type": "By_Order_create",
+          "version": ["100"],
+          "params": [
+            {
+              "key": "uid",
+              "desc": "用户id[必须]",
+              "value": "39"
+            },
+            {
+              "key": "ids",
+              "desc": "购物车项目id[必须]",
+              "value": "848,847"
+            },
+            {
+              "key": "address_id",
+              "desc": "收货地址id[必须]",
+              "value": "277"
+            },
+            {
+              "key": "del",
+              "desc": "删除购物车项标记[可选，默认0 创建订单后不删除购物车项]",
+              "value": "0"
+            },
+            {
+              "key": "note",
+              "desc": "备注[可选]",
+              "value": "我是备注"
+            }
+          ],
+          "authors": [
+            {
+              "name": "hebidu",
+              "email": "346551990@qq.com"
+            }
+          ]
+        },
+        {
+          "desc": "订单重新支付接口",
+          "type": "By_Order_repay",
+          "version": ["100"],
+          "params": [
+            {
+              "key": "uid",
+              "desc": "用户id[必须]",
+              "value": "39"
+            },
+            {
+              "key": "order_code",
+              "desc": "订单编号[必须]",
+              "value": "T16314215251195723302"
+            }
+          ],
+          "authors": [
+            {
+              "name": "hebidu",
+              "email": "346551990@qq.com"
+            }
+          ]
+        },
+        {
+          "desc": "订单取消接口",
+          "type": "By_Order_cancel",
+          "version": ["100"],
+          "params": [
+            {
+              "key": "uid",
+              "desc": "用户id[必须]",
+              "value": "39"
+            },
+            {
+              "key": "order_code",
+              "desc": "订单编号[必须]",
+              "value": "T16314215251195723302"
+            }
+          ],
+          "authors": [
+            {
+              "name": "hebidu",
+              "email": "346551990@qq.com"
+            }
+          ]
+        },
+        {
+          "desc": "意向订单创建接口",
+          "type": "By_IntentionalOrder_create",
+          "version": ["100"],
+          "params": [
+            {
+              "key": "uid",
+              "desc": "用户id[必须]",
+              "value": "105"
+            },
+            {
+              "key": "p_ids",
+              "desc": "商品id,逗号隔开如果有多个",
+              "value": "10,11"
+            },
+            {
+              "key": "contact_name",
+              "desc": "联系方式【可选】",
+              "value": "手机号: 13484379290"
+            },
+            {
+              "key": "note",
+              "desc": "备注【可选】",
+              "value": "请明天下午联系"
+            }
+          ],
+          "authors": [
+            {
+              "name": "hebidu",
+              "email": "346551990@qq.com"
+            }
+          ]
+        },
+        {
+          "desc": "意向订单查询接口（分页）",
+          "type": "By_IntentionalOrder_query",
+          "version": ["100"],
+          "params": [
+            {
+              "key": "uid",
+              "desc": "用户id[必须]",
+              "value": "105"
+            },
+            {
+              "key": "page_index",
+              "desc": "页码",
+              "value": "1"
+            },
+            {
+              "key": "page_size",
+              "desc": "页大小",
+              "value": "10"
+            }
+          ],
+          "authors": [
+            {
+              "name": "hebidu",
+              "email": "346551990@qq.com"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "desc": "运费相关接口",
+      "list": [
+        {
+          "desc": "运费计算接口立即购买",
+          "type": "By_Freight_calcNow",
+          "version": ["100"],
+          "params": [
+            {
+              "key": "uid",
+              "desc": "用户id[必须]",
+              "value": "39"
+            },
+            {
+              "key": "count",
+              "desc": "购买的数量，多个逗号分开（与sku_pkid应该一致）",
+              "value": "5,5"
+            },
+            {
+              "key": "sku_pkid",
+              "desc": "商品规格id[必须]",
+              "value": "185,186"
+            },
+            {
+              "key": "address_id",
+              "desc": "收货地址id[必须]",
+              "value": "277"
+            }
+          ],
+          "authors": [
+            {
+              "name": "hebidu",
+              "email": "346551990@qq.com"
+            }
+          ]
+        },
+        {
+          "desc": "运费计算接口",
+          "type": "By_Freight_calc",
+          "version": ["100"],
+          "params": [
+            {
+              "key": "uid",
+              "desc": "用户id[必须]",
+              "value": "39"
+            },
+            {
+              "key": "ids",
+              "desc": "购物车项目id[必须]",
+              "value": "848,847"
+            },
+            {
+              "key": "address_id",
+              "desc": "收货地址id[必须]",
+              "value": "277"
+            }
+          ],
+          "authors": [
+            {
+              "name": "hebidu",
+              "email": "346551990@qq.com"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "desc": "商品相关接口",
+      "list": [
+        {
+          "desc": "商品详情接口(102: 增加收藏is_fav)",
+          "type": "By_Product_detail",
+          "version": ["102"],
+          "params": [
+            {
+              "key": "id",
+              "desc": "商品id[必须]",
+              "value": "119"
+            }
+          ],
+          "authors": [
+            {
+              "name": "商品数据说明",
+              "email": "http://doc.oschina.net/guangnan?t=136342"
+            }
+          ]
+        },
+        {
+          "desc": "商品搜索关键词(最多10条)",
+          "type": "By_Product_searchKeywords",
+          "version": ["100"],
+          "params": [
+            {
+              "key": "keyword",
+              "desc": "关键词[必须]",
+              "value": "摩登"
+            }
+          ],
+          "authors": [
+            {
+              "name": "hebidu",
+              "email": "346551990@qq.com"
+            }
+          ]
+        },
+        {
+          "desc": "商品搜索(分页)",
+          "type": "By_Product_search",
+          "version": ["100"],
+          "params": [
+            {
+              "key": "keyword",
+              "desc": "关键词[可选]",
+              "value": ""
+            },
+            {
+              "key": "cate_id",
+              "desc": "类目id[可选]",
+              "value": "1"
+            },
+            {
+              "key": "prop_id",
+              "desc": "一级类目属性id[可选]",
+              "value": "1"
+            },
+            {
+              "key": "page_size",
+              "desc": "每页大小[可选,默认10]",
+              "value": "10"
+            },
+            {
+              "key": "page_index",
+              "desc": "当前页码[可选,默认1]",
+              "value": "1"
+            }
+          ],
+          "authors": [
+            {
+              "name": "hebidu",
+              "email": "346551990@qq.com"
+            }
+          ]
+        }
+      ]
+    },
+    {
+    "desc": "消息相关接口",
+    "list": [
+      {
+        "desc": "消息添加接口",
+        "type": "By_Message_add",
+        "version": [
+          "100"
+        ],
+        "params": [
+          {
+            "key": "uid",
+            "desc": "发出用户id[必须]",
+            "value": "105"
+          },{
+          "key": "to_uid",
+          "desc": "接受用户id[必须]",
+          "value": "105"
+          },
+          {
+            "key": "msg_type",
+            "desc": "类型[必须]",
+            "value": "6048"
+          },
+          {
+            "key": "title",
+            "desc": "消息标题[必须]",
+            "value": "我是消息概要"
+          },
+          {
+            "key": "summary",
+            "desc": "消息摘要[必须]",
+            "value": "我是消息概要"
+          },
+          {
+            "key": "content",
+            "desc": "消息内容[必须]",
+            "value": "我是消息内容"
+          },
+          {
+            "key": "extra",
+            "desc": "额外信息[可选]",
+            "value": ""
+          }
+        ],
+        "authors": [
+          {
+            "name": "hebidu",
+            "email": "346551990@qq.com"
+          }
+        ]
+      },
+      {
+        "desc": "消息查询接口",
+        "type": "By_Message_query",
+        "version": [
+          "100"
+        ],
+        "params": [
+          {
+            "key": "uid",
+            "desc": "用户id[必须]",
+            "value": "105"
+          },
+          {
+            "key": "msg_type",
+            "desc": "类型[必须]",
+            "value": "6048"
+          },
+          {
+            "key": "page_index[必须]",
+            "desc": "页码",
+            "value": "1"
+          },
+          {
+            "key": "page_size[必须]",
+            "desc": "页数",
+            "value": "10"
+          }
+        ],
+        "authors": [
+          {
+            "name": "hebidu",
+            "email": "346551990@qq.com"
+          }
+        ]
+      }
+    ]
+    },
+    {
+      "desc": "支付相关接口",
+      "list": [
+        {
+          "desc": "支付方式",
+          "type": "By_Config_supportPayways",
+          "version": ["100"],
+          "params": [
+          ],
+          "authors": [
+            {
+              "name": "hebidu",
+              "email": "346551990@qq.com"
+            }
+          ]
+        }
+
+      ]
+    },
+    {
+      "desc": "客服相关接口",
+      "list": [
+        {
+          "desc": "获取客服列表",
+          "type": "By_Customer_all",
+          "version": ["100"],
+          "params": [
+            {
+              "key": "id",
+              "desc": "商品id[必须]",
+              "value": "143"
+            }
+          ],
+          "authors": [
+            {
+              "name": "hebidu",
+              "email": "346551990@qq.com"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "desc": "收藏相关接口",
+      "list": [
+        {
+          "desc": "收藏置顶接口(支持多个)",
+          "type": "By_Favorites_stick",
+          "version": ["100"],
+          "params": [
+            {
+              "key": "uid",
+              "desc": "收藏人ID[必须]",
+              "value": "39"
+            }, {
+              "key": "ids",
+              "desc": "置顶物品()[必须]",
+              "value": "39,188"
+            }
+
+          ],
+          "authors": [
+            {
+              "name": "hebidu",
+              "email": "346551990@qq.com"
+            }
+          ]
+
+        },
+        {
+          "desc": "收藏查询接口(带分页)",
+          "type": "By_Favorites_query",
+          "version": ["100"],
+          "params": [
+            {
+              "key": "uid",
+              "desc": "收藏人ID[必须]",
+              "value": "39"
+            },
+            {
+              "key": "page_size",
+              "desc": "每页大小[可选,默认10]",
+              "value": "10"
+            },
+            {
+              "key": "page_index",
+              "desc": "当前页码[可选,默认1]",
+              "value": "1"
+            },
+            {
+              "key": "keyword",
+              "desc": "搜索关键词[可选]",
+              "value": ""
+            },
+            {
+              "key": "cate_id",
+              "desc": "搜索类目[可选]",
+              "value": ""
+            }
+          ],
+          "authors": [
+            {
+              "name": "hebidu",
+              "email": "346551990@qq.com"
+            }
+          ]
+
+        },
+        {
+          "desc": "批量取消收藏",
+          "type": "By_Favorites_bulkCancel",
+          "version": ["100"],
+          "params": [
+            {
+              "key": "uid",
+              "desc": "收藏人ID[必须]",
+              "value": "39"
+            },
+            {
+              "key": "ids",
+              "desc": "取消收藏项目的id,多个以逗号隔开[必须]",
+              "value": "39,40"
+            }
+          ],
+          "authors": [
+            {
+              "name": "hebidu",
+              "email": "346551990@qq.com"
+            }
+          ]
+
+        },
+        {
+          "desc": "收藏包含的类目，不分上下级别",
+          "type": "By_Favorites_cate",
+          "version": ["100"],
+          "params": [
+            {
+              "key": "uid",
+              "desc": "收藏人ID[必须]",
+              "value": "39"
+            }
+            ],
+          "authors": [
+            {
+              "name": "hebidu",
+              "email": "346551990@qq.com"
+            }
+          ]
+
+        },
+        {
+          "desc": "添加/取消收藏接口(单物品)",
+          "type": "By_Favorites_add",
+          "version": ["101"],
+          "params": [
+            {
+              "key": "uid",
+              "desc": "收藏人ID[必须]",
+              "value": "39"
+            },
+            {
+              "key": "id",
+              "desc": "收藏东西主键id[必须]",
+              "value": "143"
+            },
+            {
+              "key": "f_type",
+              "desc": "收藏类型id(1: 商品,3: 类目)[必须]",
+              "value": "1"
+            }
+          ],
+          "authors": [
+            {
+              "name": "hebidu",
+              "email": "346551990@qq.com"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "desc": "购物车相关接口",
+      "list": [
+        {
+          "desc": "购物车批量添加",
+          "type": "By_ShoppingCart_bulkAdd",
+          "version": ["100"],
+          "params": [
+            {
+              "key": "uid",
+              "desc": "添加人uid",
+              "value": "39"
+            },
+            {
+              "key": "id",
+              "desc": "加入购物车的商品ID",
+              "value": "40"
+            },
+            {
+              "key": "sku_pkid",
+              "desc": "加入购物车的商品的规格id多个逗号分开（注意：不是sku_id）",
+              "value": "151,152"
+            },
+            {
+              "key": "count",
+              "desc": "购买的数量，多个逗号分开（与sku_pkid应该一致）",
+              "value": "5,5"
+            }
+          ]
+        },
+        {
+          "desc": "购物车查询,查询出全部",
+          "type": "By_ShoppingCart_query",
+          "version": ["101","102"],
+          "params": [
+            {
+              "key": "uid",
+              "desc": "查询人的uid",
+              "value": "39"
+            }
+          ]
+        },{
+          "desc": "购物车删除(支持多个)",
+          "type": "By_ShoppingCart_delete",
+          "version": ["100"],
+          "params": [
+            {
+              "key": "uid",
+              "desc": "查询人的uid",
+              "value": "39"
+            },
+            {
+              "key": "id",
+              "desc": "购物车项的id字符串，多个以逗号隔开",
+              "value": "39,40"
+            }
+          ]
+        },
+        {
+          "desc": "购物车添加",
+          "type": "By_ShoppingCart_add",
+          "version": ["100"],
+          "params": [
+            {
+              "key": "uid",
+              "desc": "添加人uid",
+              "value": "39"
+            },
+            {
+              "key": "id",
+              "desc": "加入购物车的商品ID",
+              "value": "145"
+            },
+            {
+              "key": "sku_pkid",
+              "desc": "加入购物车的商品的规格id（注意：不是sku_id）",
+              "value": "1498"
+            },
+            {
+              "key": "count",
+              "desc": "购买的数量",
+              "value": "5"
+            }
+          ]
+        },
+        {
+          "desc": "购物车更新",
+          "type": "By_ShoppingCart_update",
+          "version": ["100"],
+          "params": [
+            {
+              "key": "uid",
+              "desc": "添加人uid",
+              "value": "39"
+            },
+            {
+              "key": "id",
+              "desc": "购物车项ID",
+              "value": "145"
+            },
+            {
+              "key": "count",
+              "desc": "更新后的数量",
+              "value": "5"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "desc": "用户相关接口",
+      "list": [
+        {
+          "desc": "自动登录接口",
+          "type": "By_User_autoLogin",
+          "version": ["100"],
+          "params": [
+            {
+              "key": "uid",
+              "desc": "登录用户id",
+              "value": "120"
+            },
+            {
+              "key": "auto_login_code",
+              "desc": "登录返回的用户信息中的auto_login_code（授权码）",
+              "value": "120"
+            }
+          ],
+          "authors": [
+            {
+              "name": "hebidu",
+              "email": "346551990@qq.com"
+            }
+          ]
+        },
+        {
+          "desc": "修改密码( 授权码形式15分钟时效 )",
+          "type": "By_User_updatePwdWithAuthCode",
+          "version": ["100"],
+          "params": [
+            {
+              "key": "uid",
+              "desc": "用户id",
+              "value": "39"
+            },
+            {
+              "key": "password",
+              "desc": "旧密码（加密过的）",
+              "value": "123456"
+            },
+            {
+              "key": "auth_code",
+              "desc": "授权码(itboye为万能授权码)",
+              "value": "itboye"
+            },
+            {
+              "key": "new_pwd",
+              "desc": "新密码（明文）",
+              "value": "123456"
+            }
+          ],
+          "authors": [
+            {
+              "name": "hebidu",
+              "email": "346551990@qq.com"
+            }
+          ]
+        },
+        {
+          "desc": "用户登录(手机号形式)",
+          "type": "By_User_loginByCode",
+          "version": ["100"],
+          "params": [
+            {
+              "key": "country",
+              "desc": "手机号国家区号",
+              "value": "+86"
+            },
+            {
+              "key": "mobile",
+              "desc": "登录手机号",
+              "value": "13484379290"
+            },
+            {
+              "key": "code",
+              "desc": "验证码",
+              "value": "itboye"
+            }
+          ],
+          "authors": [
+            {
+              "name": "hebidu",
+              "email": "346551990@qq.com"
+            }
+          ]
+        },
+        {
+          "desc": "用户登录",
+          "type": "By_User_login",
+          "version": ["101","102"],
+          "params": [
+            {
+              "key": "country",
+              "desc": "手机号国家区号",
+              "value": "+86"
+            },
+            {
+              "key": "username",
+              "desc": "登录用户名（限手机号）",
+              "value": "13484379290"
+            },
+            {
+              "key": "password",
+              "desc": "登录密码（6-32位）",
+              "value": "123456"
+            }
+          ],
+          "authors": [
+            {
+              "name": "hebidu",
+              "email": "346551990@qq.com"
+            }
+          ]
+        },
+        {
+          "desc": "用户删除",
+          "type": "By_User_delete",
+          "version": ["100"],
+          "params": [
+            {
+              "key": "mobile",
+              "desc": "登录用户名（限手机号）",
+              "value": "13484379290"
+            }
+          ],
+          "authors": [
+            {
+              "name": "hebidu",
+              "email": "346551990@qq.com"
+            }
+          ]
+        },
+        {
+          "desc": "用户注册",
+          "type": "By_User_register",
+          "version": ["101"],
+          "params": [
+            {
+              "key": "code",
+              "desc": "验证码[必须](itboye是万能验证码，测试其它请调用验证码接口获取)",
+              "value": "itboye"
+            },
+            {
+              "key": "country",
+              "desc": "国家电话[手机号注册必须]（国家区号）",
+              "value": "+86"
+            },
+            {
+              "key": "username",
+              "desc": "注册用户名[必须]（限手机号）",
+              "value": "13484379290"
+            },
+            {
+              "key": "password",
+              "desc": "注册密码[必须]（6-32位）",
+              "value": "123456"
+            },
+            {
+              "key": "from",
+              "desc": "注册来源[必须](0:系统)",
+              "value":  "0"
+            }
+          ],
+          "authors": [
+            {
+              "name": "hebidu",
+              "email": "346551990@qq.com"
+            }
+          ]
+        },
+        {
+          "desc": "用户修改密码(手机号+验证码)",
+          "type": "By_User_updatePwd",
+          "params": [
+            {
+              "key": "country",
+              "desc": "国家[必须]",
+              "value": "+86"
+            },
+            {
+              "key": "code",
+              "desc": "验证码[必须](itboye是万能验证码，测试其它请调用验证码接口获取)",
+              "value": "itboye"
+            },
+            {
+              "key": "mobile",
+              "desc": "手机号",
+              "value": "13484379290"
+            },
+            {
+              "key": "password",
+              "desc": "新密码[必须]（6-32位）",
+              "value": "654321"
+            }
+          ],
+          "version": ["101"],
+          "authors": [
+            {
+              "name": "hebidu",
+              "email": "346551990@qq.com"
+            }
+          ]
+        },
+        {
+          "desc": "用户修改密码(通过旧密码)",
+          "type": "By_User_updatePwdByOldPwd",
+          "params": [
+            {
+              "key":"uid",
+              "desc":"用户id[必须]",
+              "value":"42"
+            },
+            {
+              "key": "password",
+              "desc": "旧密码[必须]",
+              "value": "123456"
+            },
+            {
+              "key": "new_password",
+              "desc": "新密码[必须]",
+              "value": "654321"
+            }
+          ],
+          "version": ["100"],
+          "authors": [
+            {
+              "name": "hebidu",
+              "email": "346551990@qq.com"
+            }
+          ]
+        },
+        {
+          "desc": "用户个人资料修改",
+          "type": "By_User_update",
+          "params": [
+            {
+              "key":"uid",
+              "desc":"用户id[必须]",
+              "value":"42"
+            },
+            {
+              "key": "nickname",
+              "desc": "昵称[可选]",
+              "value": "123456"
+            },
+            {
+              "key": "sex",
+              "desc": "性别(0,1)[可选]",
+              "value": "0"
+            },
+            {
+              "key": "sign",
+              "desc": "个性签名[可选]",
+              "value": "我是签名"
+            },
+            {
+              "key": "email",
+              "desc": "邮箱[可选]",
+              "value": "12465789@qq.com"
+            },
+            {
+              "key": "weixin",
+              "desc": "微信号[可选]",
+              "value": "13484379290"
+            },
+            {
+              "key": "company",
+              "desc": "公司[可选]",
+              "value": "杭州博也网络科技有限公司"
+            },
+            {
+              "key": "job_title",
+              "desc": "岗位职位[可选]",
+              "value": "采购师"
+            },
+            {
+              "key": "loc_country",
+              "desc": "所在国家编码(对应数据库中的编码)[可选]",
+              "value": "1"
+            },
+            {
+              "key": "loc_area",
+              "desc": "所在地区(文字描述)[可选]",
+              "value": "中国 浙江 杭州"
+            }
+          ],
+          "version": ["100"],
+          "authors": [
+            {
+              "name": "hebidu",
+              "email": "346551990@qq.com"
+            }
+          ]
+        }
+
+      ]
+    },
+    {
+      "desc": "验证码相关接口",
+      "list": [
+        {
+          "desc": "验证码发送接口(20161017 11:40)",
+          "type": "By_SecurityCode_send",
+          "version": ["101"],
+          "params": [
+            {
+              "key":"country",
+              "desc": "手机号国家区号[必须]带+号",
+              "value": "+86"
+            },
+            {
+              "key": "mobile",
+              "desc": "手机号[必须]",
+              "value": "13484379290"
+            },
+            {
+              "key": "code_type",
+              "desc": "发送验证码类型(1: 注册 2: 更新密码 3: 新绑定手机号 5: 登录)[必须]",
+              "value": "1"
+            }
+          ],
+          "authors": [
+            {
+              "name": "hebidu",
+              "email": "346551990@qq.com"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "desc": "配置相关接口",
+      "list": [
+        {
+          "desc": "获取app接口配置(10分钟缓存时间)",
+          "type": "By_Config_app",
+          "version": ["100"],
+          "params": [
+          ],
+          "authors": [
+            {
+              "name": "hebidu",
+              "email": "346551990@qq.com"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "desc": "收货地址接口",
+      "list": [
+        {
+          "desc": "收货地址新增接口",
+          "type": "By_Address_add",
+          "version": ["100"],
+          "params": [
+            {
+              "key": "uid",
+              "desc": "用户id[必须]",
+              "value": "39"
+            },
+            {
+              "key":"default",
+              "desc": "标记是否默认地址[必须]",
+              "value": "1"
+            },
+            {
+              "key": "country",
+              "desc": "国家[必须]",
+              "value": "中国"
+            },
+            {
+              "key": "country_id",
+              "desc": "国家编号[必须]",
+              "value": "1"
+            },
+            {
+              "key": "province",
+              "desc": "省份[可选]",
+              "value": "浙江"
+            },
+            {
+              "key": "city",
+              "desc": "城市[可选]",
+              "value": "杭州"
+            },
+            {
+              "key": "area",
+              "desc": "区域[可选]",
+              "value": "江干区"
+            },{
+              "key": "provinceid",
+              "desc": "省份ID[可选]",
+              "value": "330000"
+            },
+            {
+              "key": "cityid",
+              "desc": "城市ID[可选]",
+              "value": "330100"
+            },
+            {
+              "key": "areaid",
+              "desc": "区域[可选]",
+              "value": "330104"
+            },
+            {
+              "key": "detailinfo",
+              "desc": "详细地址[必须]",
+              "value": "下沙街道智慧谷互联网大厦803室"
+            },
+            {
+              "key": "contactname",
+              "desc": "联系人[必须]",
+              "value": "何必都"
+            },
+            {
+              "key": "mobile",
+              "desc": "联系人手机[必须]",
+              "value": "13484379290"
+            },
+            {
+              "key": "postal_code",
+              "desc": "邮编[必须]",
+              "value": "330100"
+            },
+            {
+              "key": "wxno",
+              "desc": "微信[可选]",
+              "value": ""
+            },
+            {
+              "key": "id_card",
+              "desc": "身份证号[可选]",
+              "value": ""
+            }
+          ],
+          "authors": [
+            {
+              "name": "hebidu",
+              "email": "346551990@qq.com"
+            }
+          ]
+        },
+        {
+          "desc": "收货地址查询接口",
+          "type": "By_Address_query",
+          "version": ["100"],
+          "params": [
+            {
+              "key": "uid",
+              "desc": "用户id[必须]",
+              "value": "39"
+            }
+          ],
+          "authors": [
+            {
+              "name": "hebidu",
+              "email": "346551990@qq.com"
+            }
+          ]
+        },
+        {
+          "desc": "收货地址删除接口(用户id与地址id对应才删除成功)",
+          "type": "By_Address_delete",
+          "version": ["100"],
+          "params": [
+            {
+              "key": "id",
+              "desc": "地址id[必须]",
+              "value": "142"
+            },
+            {
+              "key": "uid",
+              "desc": "用户id[必须]",
+              "value": "39"
+            }
+          ],
+          "authors": [
+            {
+              "name": "hebidu",
+              "email": "346551990@qq.com"
+            }
+          ]
+        },
+        {
+          "desc": "收货地址更新接口",
+          "type": "By_Address_update",
+          "version": ["100"],
+          "params": [
+            {
+              "key":"id",
+              "desc":"收货地址id[必须]",
+              "value": "1"
+            },
+            {
+              "key": "uid",
+              "desc": "用户id[必须]",
+              "value": "39"
+            },
+            {
+              "key":"default",
+              "desc": "标记是否默认地址[必须]",
+              "value": "1"
+            },
+            {
+              "key": "country",
+              "desc": "国家[必须]",
+              "value": "中国"
+            },
+            {
+              "key": "country_id",
+              "desc": "国家编号[必须]",
+              "value": "1"
+            },
+            {
+              "key": "province",
+              "desc": "省份[可选]",
+              "value": "浙江"
+            },{
+              "key": "provinceid",
+              "desc": "省份ID[可选]",
+              "value": "330000"
+            },
+            {
+              "key": "city",
+              "desc": "城市[可选]",
+              "value": "杭州"
+            },
+            {
+              "key": "cityid",
+              "desc": "城市ID[可选]",
+              "value": "330100"
+            },
+            {
+              "key": "area",
+              "desc": "区域[可选]",
+              "value": "江干区"
+            },
+            {
+              "key": "areaid",
+              "desc": "区域[可选]",
+              "value": "330104"
+            },
+            {
+              "key": "detailinfo",
+              "desc": "详细地址[必须]",
+              "value": "下沙街道智慧谷互联网大厦803室"
+            },
+            {
+              "key": "contactname",
+              "desc": "联系人[必须]",
+              "value": "何必都"
+            },
+            {
+              "key": "mobile",
+              "desc": "联系人手机[必须]",
+              "value": "13484379290"
+            },
+            {
+              "key": "postal_code",
+              "desc": "邮编[必须]",
+              "value": "330100"
+            },
+            {
+              "key": "wxno",
+              "desc": "微信[可选]",
+              "value": ""
+            },
+            {
+              "key": "id_card",
+              "desc": "身份证号[可选]",
+              "value": ""
+            }
+          ],
+          "authors": [
+            {
+              "name": "hebidu",
+              "email": "346551990@qq.com"
+            }
+          ]
+        },
+        {
+          "desc": "设置默认收货地址接口(用户id与地址id对应才设置成功)",
+          "type": "By_Address_setDefault",
+          "version": ["100"],
+          "params": [
+            {
+              "key": "id",
+              "desc": "地址id[必须]",
+              "value": "142"
+            },
+            {
+              "key": "uid",
+              "desc": "用户id[必须]",
+              "value": "39"
+            }
+          ],
+          "authors": [
+            {
+              "name": "hebidu",
+              "email": "346551990@qq.com"
+            }
+          ]
+        },
+        {
+          "desc": "获取默认收货地址接口",
+          "type": "By_Address_getDefault",
+          "version": ["100"],
+          "params": [
+            {
+              "key": "uid",
+              "desc": "用户id[必须]",
+              "value": "39"
+            }
+          ],
+          "authors": [
+            {
+              "name": "hebidu",
+              "email": "346551990@qq.com"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "desc": "类目相关接口",
+      "list": [
+        {
+          "desc": "一级类目查询接口",
+          "type": "By_Category_queryMainCategory",
+          "version": ["100"],
+          "params": [
+          ],
+          "authors": [
+            {
+              "name": "hebidu",
+              "email": "346551990@qq.com"
+            }
+          ]
+        },
+        {
+          "desc": "子类目查询接口",
+          "type": "By_Category_querySubCategory",
+          "version": ["100"],
+          "params": [
+            {
+              "key": "cate_id",
+              "desc": "类目id[必须]",
+              "value": "188"
+            }
+          ],
+          "authors": [
+            {
+              "name": "hebidu",
+              "email": "346551990@qq.com"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

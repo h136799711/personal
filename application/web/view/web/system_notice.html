@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>系统通知</title>
+    <link rel="stylesheet" href="__CSS__about.css">
+    <link rel="stylesheet" href="__CSS__bootstrap.min.css">
+    <script src="__JS__jquery.js"></script>
+    <script src="__JS__bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="navbar-fixed-top" id="top">
+        冠南纺织有限公司
+    </div>
+    <div class="col-xs-12" id="solid">
+        <img src="__IMG__2.jpg"/>
+    </div>
+    <div class="col-xs-12" id="content">
+        {volist name="list" id="vo"}
+        <h3>{$vo.post_title}</h3>
+        {$vo.post_author_name}
+        {$vo.post_date|date="Y年m月d日 H:i:s",###}<br/>
+        <hr/>
+        {$vo.post_excerpt}<br/><br/>
+        {$vo.post_content|htmlspecialchars_decode=###}
+        {/volist}
+    </div>
+</div>
+</body>
+</html>

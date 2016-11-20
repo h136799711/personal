@@ -1,0 +1,37 @@
+#solid {
+    margin-top: 70px;
+    overflow: hidden;
+}
+img{
+    max-width:100%;
+    max-height:200px;
+}
+#top {
+    font-size: 18px;
+}
+
+.navbar-fixed-top {
+    padding: 10px;
+    height: 50px;
+    color: white;
+    background: #0076cf;
+}
+
+#footer {
+    padding: 24px;
+    font-size: 14px;
+    color: #707070;
+    text-align: center;
+}
+
+#content {
+    padding-top: 10px;
+}
+
+span.glyphicon-chevron-right {
+    float: right;
+}
+
+#generic {
+    height: 260px;
+}

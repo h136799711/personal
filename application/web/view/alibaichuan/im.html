@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{$user['title']}</title>
+</head>
+<body>
+
+
+<!--[if lt IE 9]>
+<script src="https://g.alicdn.com/aliww/ww/json/json.js" charset="utf-8"></script>
+<![endif]-->
+<!-- 自动适配移动端与pc端 -->
+<script src="https://g.alicdn.com/aliww/??h5.openim.sdk/1.0.6/scripts/wsdk.js,h5.openim.kit/0.3.3/scripts/kit.js" charset="utf-8"></script>
+<script>
+    window.onload = function(){
+        WKIT.init({
+//            container: document.getElementById('J_demo'),
+//            width: 700,
+//            height: 500,
+            title:'{$user['title']}',
+            avatar:'{$user['avatar']}',
+            uid: '{$user['uid']}',
+            appkey: 23500185,
+            credential: '{$user['password']}',
+            toavatr:'{$touser['avatar']}',
+            touid: '{$touser['uid']}',
+            logo: 'http://img.alicdn.com/tps/i3/TB12LD9IFXXXXb3XpXXSyFWJXXX-82-82.png',
+            pluginUrl: ''
+        });
+    }
+</script>
+</body>
+</html>
